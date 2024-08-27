@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-authentification',
   standalone: true,
-  imports: [],
+  imports: [AngularSvgIconModule, RouterOutlet],
   templateUrl: './authentification.component.html',
   styleUrl: './authentification.component.scss',
 })
