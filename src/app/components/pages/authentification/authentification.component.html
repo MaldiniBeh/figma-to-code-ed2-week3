@@ -1,0 +1,25 @@
+<div class="flex h-screen w-screen">
+  <div class="auth-bg hidden flex-1 items-center justify-center bg-primary-700 bg-cover lg:flex">
+    <div class="max-w-2xl space-y-4 p-8 text-center text-white">
+      <img src="/assets/images/login-image.jpg" alt="login-coin" />
+      <h1 class="text-4xl font-bold">"Secure Your Finances, Anytime, Anywhere"</h1>
+      <p class="text-sm font-light">
+        Welcome to Tokena, your trusted digital wallet. Safely manage your funds, track your
+        transactions, and enjoy seamless financial control—all in one place. Sign in to start
+        <span class="cursor-pointer font-medium text-yellow-400">your secure journey with us</span>
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-1 items-center justify-center bg-white dark:bg-night-700">
+    <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
+      <!-- logo -->
+      <div class="flex items-center justify-center">
+        <a class="rounded p-2">
+          <img src="/assets/img/Logo-Pharmacie.jpg" height="auto" width="90px" alt="logo" />
+        </a>
+        <b class="text-md pl-3 font-bold text-gray-700 dark:text-white"> Tokena </b>
+      </div>
+      <router-outlet />
+    </div>
+  </div>
+</div>

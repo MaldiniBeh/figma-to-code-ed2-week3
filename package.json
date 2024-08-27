@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:figma-to-code-ed2-week3": "node dist/figma-to-code-ed2-week3/server/server.mjs"
+    "serve:ssr:figma-to-code-ed2-week3": "node dist/figma-to-code-ed2-week3/server/server.mjs",
+    "lint": "eslint . --ext .ts,.html",
+    "lint:fix": "eslint . --ext .ts,.html --fix",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\""
   },
   "private": true,
   "dependencies": {
@@ -33,7 +36,13 @@
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "angular-svg-icon": "^18.0.1",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -41,6 +50,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.4.41",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.10",
     "typescript": "~5.5.2"
   }

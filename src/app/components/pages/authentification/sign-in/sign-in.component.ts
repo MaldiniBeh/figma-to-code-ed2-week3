@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { moveInLeft } from '../../../../route-animation';
+
+@Component({
+  selector: 'app-sign-in',
+  standalone: true,
+  imports: [],
+  templateUrl: './sign-in.component.html',
+  styleUrl: './sign-in.component.scss',
+  animations: [moveInLeft()],
+})
+export class SignInComponent implements OnInit {
+  state = '';
+  SignForm!: FormGroup;
+  eye = true;
+  isload!: Boolean;
+  typePassword = 'password';
+  constructor() {}
+  ngOnInit(): void {
+    this.onReset();
+  }
+  onReset() {
+    this.SignForm = new FormGroup({
+      pass: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      mail: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9._-]+\.[A-Za-z]{2,6}$/),
+      ]),
+    });
+  }
+  toggleEye() {
+    this.eye = !this.eye;
+    this.typePassword = this.eye ? 'password' : 'text';
+  }
+}
