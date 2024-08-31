@@ -10,3 +10,25 @@
         align-items: center;
     }
 }
+@layer base {
+    [type="text"],
+    [type="email"],
+    [type="password"],
+    [type="number"],
+    [type="search"],
+    [type="tel"],
+    [multiple],
+    textarea,
+    select {
+      @apply w-full rounded-md border border-gray-300 px-3 py-3 text-xs
+       placeholder-gray-400 focus:z-10 
+       focus:border-blue-500 focus:outline-none focus:ring-blue-500;
+    }
+  
+    [type="checkbox"],
+    [type="radio"] {
+      @apply h-4 w-4 rounded border-gray-300 bg-gray-100
+       text-green-600 focus:ring-2 focus:ring-green-500
+         dark:focus:ring-green-600;
+    }
+  }

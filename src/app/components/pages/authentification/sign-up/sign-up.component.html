@@ -1,1 +1,146 @@
-<p>sign-up works!</p>
+<form class="my-4 space-y-6" (ngSubmit)="OnSignUp()" [formGroup]="signUpData" [@moveInLeft]="state">
+  <div class="text-center">
+    <h2 class="mb-1 text-3xl font-semibold text-gray-700">
+      Sign up <span class="text-primary-900">!</span>
+    </h2>
+    <p class="text-sm text-gray-400 dark:text-night-200">
+      Let's get started with your 30 day free trial
+    </p>
+  </div>
+  <div>
+    <button
+      class="group relative mb-10 flex w-full justify-center rounded-md border hover:bg-gray-50 py-2 px-4 text-black focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+      type="button"
+    >
+      <svg-icon src="assets/icons/google-logo.svg" [svgClass]="'h-6 w-6 mr-2'"> </svg-icon>
+      <span class="text-md font-bold text-gray-700"> Sign up with Google</span>
+    </button>
+  </div>
+  <div
+    class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-muted after:mt-0.5 after:flex-1 after:border-t after:border-muted"
+  >
+    <p class="mx-4 mb-0 text-center text-sm text-gray-800">or</p>
+  </div>
+  <div class="space-y-3 text-left">
+    <div class="relative">
+      <input
+        type="text"
+        id="email"
+        [ngClass]="{
+          'border-red-500': !signUpData.get('mail')?.valid && signUpData.get('mail')?.touched,
+        }"
+        class="peer block"
+        formControlName="mail"
+        placeholder=" "
+      />
+      <label
+        for="email"
+        [ngClass]="{
+          'text-red-500': !signUpData.get('mail')?.valid && signUpData.get('mail')?.touched,
+        }"
+        class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-500"
+      >
+        Email address
+      </label>
+    </div>
+    <em
+      class="text-sm text-red-500"
+      *ngIf="!signUpData?.get('mail')?.valid && signUpData?.get('mail')?.touched"
+      >Email invalid
+    </em>
+    <div class="relative">
+      <input
+        [type]="typePassword"
+        id="password"
+        class="peer block"
+        [ngClass]="{
+          'border-red-500':
+            !signUpData.get('password')?.valid && signUpData.get('password')?.touched,
+        }"
+        formControlName="password"
+        placeholder=" "
+      />
+      <label
+        for="password"
+        [ngClass]="{
+          'text-red-500': !signUpData.get('password')?.valid && signUpData.get('password')?.touched,
+        }"
+        class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-600"
+      >
+        Password
+      </label>
+      <span class="absolute top-2.5 right-5 cursor-pointer text-gray-400 dark:text-night-300">
+        <svg-icon
+          (click)="toggleEye()"
+          src="assets/icons/{{ eye ? 'eye-off' : 'eye' }}.svg"
+          [svgClass]="'h-5 w-5'"
+        >
+        </svg-icon>
+      </span>
+    </div>
+    <em
+      class="text-sm text-red-500"
+      *ngIf="!signUpData?.get('password')?.valid && signUpData?.get('password')?.touched"
+      >Minimum 8 characters
+    </em>
+    <div class="relative">
+      <input
+        [type]="typePassword"
+        id="confirm-password"
+        class="peer block"
+        placeholder=" "
+        formControlName="cpassword"
+        (input)="setConfirmPasswordError()"
+        [ngClass]="{
+          'border-red-500':
+            (!signUpData.get('cpassword')?.valid && signUpData.get('cpassword')?.touched) ||
+            checkedState === false,
+        }"
+      />
+
+      <label
+        for="confirm-password"
+        class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-500"
+        [ngClass]="{
+          'text-red-500':
+            (!signUpData.get('cpassword')?.valid && signUpData.get('cpassword')?.touched) ||
+            checkedState === false,
+        }"
+      >
+        Confirm password
+      </label>
+    </div>
+    <em
+      class="text-sm text-red-500"
+      *ngIf="
+        (!signUpData?.get('cpassword')?.valid && signUpData?.get('cpassword')?.touched) ||
+        checkedState === false
+      "
+      >Password doesn't match
+    </em>
+  </div>
+
+  <div class="flex items-center justify-between space-x-3">
+    <div class="flex items-center">
+      <input id="accept-term" name="accept-term" type="checkbox" />
+      <label for="accept-term" class="ml-2 block text-sm text-gray-400 dark:text-night-200">
+        I agree
+        <a class="font-medium text-primary-500 hover:text-primary-400"> Terms </a>
+      </label>
+    </div>
+  </div>
+
+  <button
+    [disabled]="!signUpData.valid"
+    class="group relative mb-10 flex w-full justify-center rounded-md border border-transparent bg-primary-900 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-500"
+  >
+    Sign up
+  </button>
+
+  <div class="text-sm text-gray-400 dark:text-night-200">
+    Have you got an account?
+    <a routerLink="/auth/sign-in" class="font-medium text-blue-500 hover:text-primary-400"
+      >Sign in</a
+    >
+  </div>
+</form>

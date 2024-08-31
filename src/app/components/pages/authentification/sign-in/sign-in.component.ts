@@ -17,12 +17,10 @@ import { CommonModule } from '@angular/common';
   imports: [
     FormsModule,
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
     AngularSvgIconModule,
     RouterLink,
     AngularSvgIconModule,
-    CommonModule,
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
