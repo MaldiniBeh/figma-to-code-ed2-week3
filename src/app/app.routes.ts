@@ -3,6 +3,7 @@ import { AuthentificationComponent } from './components/pages/authentification/a
 import { RecoverPasswordComponent } from './components/pages/authentification/recover-password/recover-password.component';
 import { SignInComponent } from './components/pages/authentification/sign-in/sign-in.component';
 import { SignUpComponent } from './components/pages/authentification/sign-up/sign-up.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 export const routes: Routes = [
   {
@@ -22,7 +23,7 @@ export const routes: Routes = [
 
   {
     path: 'dashboard',
-    loadChildren: () => import('./components/layout/layout.module').then(m => m.LayoutModule),
+    component: LayoutComponent,
   },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
 ];

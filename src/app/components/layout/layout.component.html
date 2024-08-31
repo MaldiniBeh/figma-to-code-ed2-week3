@@ -1,1 +1,15 @@
-<p>layout works!</p>
+<div class="flex h-screen w-full overflow-hidden bg-gray-50">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+  <div class="grid flex-grow content-start">
+    <!-- Header -->
+    <app-navbar></app-navbar>
+
+    <!-- main content -->
+    <div
+      class="scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thin scrollbar-thumb-white scrollbar-track-gray-100"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
