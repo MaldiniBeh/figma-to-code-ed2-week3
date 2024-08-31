@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { fallIn } from '../../../../route-animation';
 
 @Component({
   selector: 'app-recover-password',
@@ -15,6 +16,7 @@ import { RouterLink } from '@angular/router';
   imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './recover-password.component.html',
   styleUrl: './recover-password.component.scss',
+  animations: [fallIn()],
 })
 export class RecoverPasswordComponent implements OnInit {
   state = '';
