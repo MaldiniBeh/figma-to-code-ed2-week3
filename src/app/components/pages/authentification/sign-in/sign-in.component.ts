@@ -14,14 +14,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    ReactiveFormsModule,
-    AngularSvgIconModule,
-    RouterLink,
-    AngularSvgIconModule,
-  ],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, AngularSvgIconModule, RouterLink],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
   animations: [moveInLeft()],

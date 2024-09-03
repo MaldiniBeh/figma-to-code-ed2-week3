@@ -1,1 +1,70 @@
-<p>navbar works!</p>
+<div class="bg-white border-b">
+  <div class="mx-auto px-5">
+    <div class="flex items-center justify-between py-3.5 md:justify-start">
+      <!-- Mobile Navigation Menu Button-->
+      <div class="sm:order-1 lg:hidden">
+        <!--  (click)="toggleMobileMenu()" -->
+        <button
+          type="button"
+          class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 hover:bg-gray-100 hover:text-gray-500 dark:bg-night-700 dark:text-night-200 dark:hover:text-night-400"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open menu</span>
+          <!-- <svg-icon src="assets/icons/menu.svg" [svgClass]="'h-6 w-6'">
+              </svg-icon> -->
+        </button>
+      </div>
+      <div class="w-full flex justify-between">
+        <!-- navbar part1 -->
+        <div class="flex space-x-8">
+          <div class="flex flex-col space-y-1">
+            <span class="font-bold"> Dashboard </span>
+            <span class="text-gray-600"> Welcome back, John Doe ! </span>
+          </div>
+          <div>
+            <button
+              type="button"
+              class="flex w-full justify-center rounded-lg border border-transparent bg-primary-900 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-500"
+            >
+              <div class="flex space-x-2">
+                <svg-icon src="assets/icons/add-wallet.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
+                <span class="text-md text-white"> Connect wallet </span>
+              </div>
+            </button>
+          </div>
+        </div>
+        <!-- part navbar2 -->
+        <div class="flex space-x-2">
+          <div>
+            <button
+              type="button"
+              class="rounded-lg border border-gray-400 px-2 py-1 bg-transparent hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:ring-offset-1"
+            >
+              <div class="flex space-x-2">
+                <span class="">USD</span>
+                <svg-icon src="assets/icons/chevron-up-down.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
+              </div>
+            </button>
+          </div>
+          <div>
+            <button
+              type="button"
+              class="rounded-lg border border-gray-400 px-2 py-[6px] bg-transparent hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:ring-offset-1"
+            >
+              <svg-icon src="assets/icons/moon.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- search -->
+      <!--  <input type="text" id="email" class="w-96 h-8" placeholder="Search" /> -->
+      <!-- Profile menu -->
+      <div class="items-center justify-end sm:order-4 md:flex md:flex-1 lg:w-0">
+        <!-- <app-profile-menu></app-profile-menu> -->
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <!-- <app-navbar-mobile></app-navbar-mobile> -->
+</div>
