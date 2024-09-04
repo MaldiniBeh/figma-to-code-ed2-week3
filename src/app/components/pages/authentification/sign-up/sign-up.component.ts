@@ -9,13 +9,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterLink, AngularSvgIconModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterModule, AngularSvgIconModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
   animations: [moveInLeft()],

@@ -7,14 +7,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { moveInLeft } from '../../../../route-animation';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, AngularSvgIconModule, RouterLink],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, AngularSvgIconModule, RouterModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
   animations: [moveInLeft()],

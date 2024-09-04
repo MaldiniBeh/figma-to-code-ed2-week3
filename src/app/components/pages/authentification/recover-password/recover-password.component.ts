@@ -7,13 +7,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { fallIn } from '../../../../route-animation';
 
 @Component({
   selector: 'app-recover-password',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './recover-password.component.html',
   styleUrl: './recover-password.component.scss',
   animations: [fallIn()],
