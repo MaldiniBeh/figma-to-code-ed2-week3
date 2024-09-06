@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { MenuItem, SubMenuItem } from '../interfaces';
 import { Menu } from '..';
@@ -7,13 +7,13 @@ import { NavigationEnd, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class MenuService {
+export class MenuService implements OnDestroy {
   pagesMenu$ = new BehaviorSubject<MenuItem[]>([]);
   private _showSidebar$ = new BehaviorSubject<boolean>(true);
   private subscription = new Subscription();
   constructor(private router: Router) {
     this.pagesMenu$.next(Menu.pages);
-    const sub = this.router.events.subscribe(event => {
+    let sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         /** Expand menu base on active route */
         this.pagesMenu$.forEach(menuItem => {
@@ -33,6 +33,7 @@ export class MenuService {
         });
       }
     });
+    this.subscription.add(sub);
   }
   get showSideBar$() {
     return this._showSidebar$.asObservable();
@@ -63,5 +64,8 @@ export class MenuService {
   }
   toggleSidebar() {
     this._showSidebar$.next(!this._showSidebar$.value);
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

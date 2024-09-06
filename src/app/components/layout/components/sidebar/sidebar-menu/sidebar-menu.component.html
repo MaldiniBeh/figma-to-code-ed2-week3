@@ -1,18 +1,14 @@
-<div class="pt-4" *ngFor="let menu of pagesMenu$ | async">
+<span class="text-lg text-gray-500 ml-2">Menu</span>
+<div class="pt-4 px-2" *ngFor="let menu of pagesMenu$ | async">
   <ul class="flex flex-col space-y-1">
     <!-- List items -->
     <li *ngFor="let item of menu.items; let i = index">
       <!-- Menu List -->
-      <div
-        (click)="toggleMenu(item)"
-        class="group relative text-gray-400 text-sm grid grid-cols-1 items-center"
-      >
+      <div (click)="toggleMenu(item)" class="group relative text-sm grid grid-cols-1 items-center">
         <!-- Icon -->
-        <div
-          [ngClass]="item.active && !(showSideBar$ | async) ? 'text-primary-800' : ''"
-          class="pointer-events-none absolute m-2 text-sm hover:text-white"
-        >
-          <svg-icon src="{{ item.iconDark }}" [svgClass]="'h-6 w-6'"> </svg-icon>
+        <div class="pointer-events-none absolute m-2 text-sm">
+          <svg-icon src="{{ item.active ? item.iconWhite : item.iconDark }}" [svgClass]="'h-5 w-5'">
+          </svg-icon>
         </div>
 
         <!-- Condition -->
@@ -26,20 +22,24 @@
         <ng-template #parentMenu let-item="item">
           <div
             routerLink="{{ item.route }}"
-            routerLinkActive="text-primary bg-[#DDEDF8] border-l-4 border-primary rounded-0"
-            class="flex h-12 cursor-pointer items-center justify-start text-sm text-gray-700 hover:shadow hover:bg-primary-800 hover:text-white hover:font-bold"
+            routerLinkActive="bg-primary-900 rounded-lg {{
+              item.active ? 'text-white ' : 'text-black'
+            }}"
+            class="flex h-10 cursor-pointer items-center justify-start text-sm"
           >
-            <a class="ml-10 truncate font-semibold tracking-wide text-sm focus:outline-none">
+            <a
+              class="ml-10 truncate font-semibold tracking-wide text-sm {{
+                item.active ? 'text-white' : 'text-black'
+              }}"
+            >
               {{ item.label }}
             </a>
           </div>
         </ng-template>
         <!-- Workaround:: Disable routerLink -->
         <ng-template #childMenu let-item="item">
-          <div
-            class="flex h-12 cursor-pointer items-center justify-start text-sm text-gray-700 hover:shadow hover:bg-primary-800 hover:text-white hover:font-bold"
-          >
-            <a class="ml-10 truncate font-semibold tracking-wide text-sm focus:outline-none">
+          <div class="flex h-12 cursor-pointer items-center justify-start text-sm text-black">
+            <a class="ml-10 truncate font-semibold tracking-wide text-sm">
               {{ item.label }}
             </a>
           </div>
@@ -47,18 +47,16 @@
         <button
           *ngIf="item.children"
           [ngClass]="{
-            hidden: !(showSideBar$ | async),
             'rotate-90': item.expanded,
           }"
-          class="pointer-events-none absolute top-1 right-0 flex items-center p-1 text-gray-400 transition-all duration-500 dark:text-night-400"
+          class="pointer-events-none absolute top-1 right-0 flex items-center p-1 transition-all duration-500 dark:text-night-400"
         >
-          <svg-icon src="assets/icons/solid/chevron-right.svg" [svgClass]="'h-5 w-5 mt-2'">
-          </svg-icon>
+          <svg-icon src="assets/icons/chevron-down.svg" [svgClass]="'h-5 w-5 mt-2'"> </svg-icon>
         </button>
         <!-- Tooltip -->
         <div class="fixed w-full z-50" *ngIf="!(showSideBar$ | async)">
           <span
-            class="z-1 absolute left-14 -top-[20px] z-50 text-sm w-auto min-w-max origin-left scale-0 rounded-md bg-primary-800 p-2 font-bold text-white shadow-md transition-all duration-200 group-hover:scale-100"
+            class="z-1 absolute left-14 -top-[20px] z-50 text-sm w-auto min-w-max origin-left scale-0 rounded-md bg-primary-800 p-2 font-bold text-white"
           >
             {{ item.label }}
           </span>

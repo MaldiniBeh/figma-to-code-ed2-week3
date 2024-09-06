@@ -1,18 +1,13 @@
 <div
-  class="max-h-0 overflow-hidden pt-1 pl-4 transition-all duration-500"
+  class="max-h-0 overflow-hidden pt-1 pl-4"
   [ngClass]="{
     hidden: !(showSideBar$ | async),
     'max-h-screen': submenu.expanded,
   }"
 >
-  <ul
-    class="flex flex-col border-l border-dashed border-gray-600 pl-2 text-night-400 dark:border-night-500"
-  >
+  <ul class="flex flex-col border-l border-dashed pl-2 text-night-400">
     <li *ngFor="let sub of submenu.children">
-      <div
-        class="flex rounded text-gray-600 hover:bg-gray-100 dark:text-night-300 dark:hover:bg-night-600"
-        (click)="toggleMenu(sub)"
-      >
+      <div class="flex rounded text-gray-600 hover:bg-gray-100" (click)="toggleMenu(sub)">
         <!-- Condition -->
         <ng-container
           [ngTemplateOutlet]="sub.children ? childMenu : parentMenu"
@@ -24,7 +19,7 @@
         <ng-template #parentMenu let-sub="sub">
           <a
             [routerLink]="sub.route"
-            routerLinkActive="text-primary-500"
+            routerLinkActive="text-blue-500"
             [routerLinkActiveOptions]="{ exact: true }"
             class="inline-block w-full px-4 py-2 text-xs font-semibold"
           >

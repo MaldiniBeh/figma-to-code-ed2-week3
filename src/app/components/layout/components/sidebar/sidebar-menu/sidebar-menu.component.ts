@@ -15,13 +15,13 @@ import { SidebarSubmenuComponent } from '../sidebar-submenu/sidebar-submenu.comp
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarMenuComponent implements OnInit {
-  public pagesMenu$: Observable<MenuItem[]> = new Observable<MenuItem[]>();
-  public showSideBar$: Observable<boolean> = new Observable<boolean>();
+  pagesMenu$: Observable<MenuItem[]> = new Observable<MenuItem[]>();
+  showSideBar$: Observable<boolean> = new Observable<boolean>();
   constructor(private menuService: MenuService) {
     this.pagesMenu$ = this.menuService.pagesMenu$;
   }
   ngOnInit(): void {}
-  public toggleMenu(subMenu: SubMenuItem) {
+  toggleMenu(subMenu: SubMenuItem) {
     this.menuService.toggleMenu(subMenu);
   }
 }
